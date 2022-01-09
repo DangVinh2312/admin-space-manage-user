@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const port = 3001;
-const { MongoClient } = require('mongodb');
+const mongodb  = require('mongodb');
 const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
+const client = new mongodb.MongoClient(url);
 const dbs_name = 'admin';
 const cors = require('cors')
 
@@ -22,19 +22,29 @@ async function getData() {
     usersData = db.collection('UserLists');
 }
 
-app.get('/api', async (req, res) => {
+//GET
+app.get('/api/users', async (req, res) => {
     const userData = await usersData.find({}).toArray();
-    const users = userData.map((user) => {
-        return {
-            _id: user._id,
-            username: user.username,
-            displayName: user.displayName,
-            phone: user.phone
-        };
-    });
-
-    res.status(201).json(users).end();
+    res.status(201).json(userData).end();
 });
+
+//POST
+app.post('/api/users/add', async (req, res) => {
+    const userData = await usersData.insertOne(req.body);
+    res.redirect('/api/users');
+})
+
+//PUT
+app.put('/api/users/:id', async (req, res) => {
+    const userData = await usersData.find({_id: mongodb.ObjectId(req.params.id)}, req.body);
+    res.redirect('/api/users');
+});
+
+//DELETE
+app.delete('/api/users/:id', async (req, res) => {
+    const userData = await usersData.deleteOne({_id: mongodb.ObjectId(req.params.id)});
+    res.redirect('/api/users');
+})
 
 app.listen(port, async () => {
     getData();

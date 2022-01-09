@@ -1,7 +1,10 @@
-const reactDom = require("react-dom");
-const {default: App} = require("./App");
+import reactDom from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import App from "./App";
 
 reactDom.render(
-    <App />,
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
     document.querySelector("#root")
 );
