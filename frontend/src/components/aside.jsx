@@ -1,26 +1,22 @@
+import { NavLink } from "react-router-dom";
+
 export default function Aside() {
     return <aside>
-        <div id="sidebar" class="nav-collapse ">
-            <ul class="sidebar-menu" id="nav-accordion">
-                <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80" /></a></p>
-                <h5 class="centered">Sam Soffes</h5>
-                <li class="mt">
-                    <a href="index.html">
-                        <i class="fa fa-dashboard"></i>
+        <div id="sidebar" className="nav-collapse ">
+            <ul className="sidebar-menu" id="nav-accordion">
+                <p className="centered"><a href="profile.html"><img src="/img/ui-sam.jpg" alt="" className="img-circle" width="80" /></a></p>
+                <h5 className="centered">Quang Vinh</h5>
+                <li className="mt">
+                    <NavLink to="/" activeclassname="active">
+                        <i className="fa fa-dashboard"></i>
                         <span>Dashboard</span>
-                    </a>
+                    </NavLink>
                 </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-desktop"></i>
-                        <span>UI Elements</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="general.html">General</a></li>
-                        <li><a href="buttons.html">Buttons</a></li>
-                        <li><a href="panels.html">Panels</a></li>
-                        <li><a href="font_awesome.html">Font Awesome</a></li>
-                    </ul>
+                <li className="sub-menu">
+                    <NavLink to="/users" activeclassname="active">
+                        <i className="fa fa-users"></i>
+                        <span>Manage Users</span>
+                    </NavLink>
                 </li>
             </ul>
 

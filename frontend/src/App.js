@@ -18,14 +18,12 @@ class App extends React.Component {
             <Aside />
 
             <section id="main-content">
-
-                <Routes>
-                    <section class="wrapper site-min-height">
+                <section className="wrapper site-min-height">
+                    <Routes>
                         <Route path="/users" element={<UserList />} />
                         <Route path="/users/add" element={<AddNewUser />} />
-                    </section>
-                </Routes>
-
+                    </Routes>
+                </section>
             </section>
 
             <Footer />
