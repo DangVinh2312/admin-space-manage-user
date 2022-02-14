@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 import Header from "./components/header";
 import UserList from "./pages/user_list/UserList";
 import AddNewUser from "./pages/user_list/AddNewUser";
+import EditCurrentUser from "./pages/user_list/EditCurrentUser";
 
 class App extends React.Component {
 
@@ -22,6 +23,7 @@ class App extends React.Component {
                     <Routes>
                         <Route path="/users" element={<UserList />} />
                         <Route path="/users/add" element={<AddNewUser />} />
+                        <Route path="/users/:id/edit" element={<EditCurrentUser />} />
                     </Routes>
                 </section>
             </section>

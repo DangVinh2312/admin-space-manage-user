@@ -41,8 +41,19 @@ app.post('/api/users/add', async (req, res) => {
 
 //PUT
 app.put('/api/users/:id', async (req, res) => {
-    const userData = await usersData.find({ _id: mongodb.ObjectId(req.params.id) }, req.body);
-    res.redirect('/api/users');
+    try {
+        await usersData.findOne({ _id: mongodb.ObjectId(req.params.id) });
+        const { username, displayName, phone } = req.body;
+        if (username !== "" && displayName !== "" && phone !== "") {
+            await usersData.updateOne({ _id: mongodb.ObjectId(req.params.id) }, { $set: req.body });
+            res.status(201).end();
+        } else {
+            res.status(400).end();
+        }
+    } catch (err){ 
+        res.status(400).end();
+    }
+
 });
 
 //DELETE

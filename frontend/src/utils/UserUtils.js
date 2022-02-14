@@ -8,10 +8,23 @@ export default class UserUtils {
     }
 
     static async delete(_id) {
-        const response = await fetch(this.API_URL + "/" +_id, {method: 'DELETE'});
-        if(response.status === 204) {
+        const response = await fetch(this.API_URL + "/" + _id, { method: 'DELETE' });
+        if (response.status === 204) {
             return true;
-        } else if(response.status === 400) {
+        } else if (response.status === 400) {
+            return false;
+        }
+    }
+
+    static async update(_id, data) {
+        const response = await fetch(this.API_URL + "/" + _id, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+        if (response.status === 201) {
+            return true;
+        } else if (response.status === 400) {
             return false;
         }
     }
@@ -19,12 +32,12 @@ export default class UserUtils {
     static async addNew(data) {
         const response = await fetch(this.API_URL + '/add', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data),
         });
-        if(response.status === 201) {
+        if (response.status === 201) {
             return true;
-        } else if(response.status === 400) {
+        } else if (response.status === 400) {
             return false;
         }
     }

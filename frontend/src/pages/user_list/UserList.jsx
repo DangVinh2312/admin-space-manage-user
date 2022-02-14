@@ -60,13 +60,15 @@ export default class UserList extends React.Component {
                             <tbody>
                                 {this.state.users.map((user, index) => {
                                     return <tr>
-                                        <td>{index+1}</td>
+                                        <td>{index + 1}</td>
                                         <td>{user._id}</td>
                                         <td>{user.username}</td>
                                         <td>{user.displayName}</td>
                                         <td>{user.phone}</td>
                                         <td>
-                                            <button onClick={e => this.editUser(user._id)} className="btn btn-primary btn-xs"><i className="fa fa-pencil"></i></button>
+                                            <Link className="btn btn-primary btn-xs" to={`/users/${user._id}/edit`}>
+                                                <i className="fa fa-pencil"></i>
+                                            </Link>
                                             <button onClick={e => this.deleteUser(user._id)} className="btn btn-danger btn-xs"><i className="fa fa-trash-o "></i></button>
                                         </td>
                                     </tr>
