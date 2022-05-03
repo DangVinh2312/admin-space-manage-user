@@ -7,6 +7,7 @@ export default class AddNewUser extends React.Component {
         super();
         this.state = {
             username: "",
+            password: "",
             displayName: "",
             phone: "",
         }
@@ -45,6 +46,7 @@ export default class AddNewUser extends React.Component {
                         <form className="form-horizontal style-form" onSubmit={this.handleSubmit}>
                             <FormInput label="Username" type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
                             <FormInput label="Display Name" type="text" name="displayName" value={this.state.displayName} onChange={this.handleChange}/>
+                            <FormInput label="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
                             <FormInput label="Phone" type="tel" name="phone" value={this.state.phone} onChange={this.handleChange}/>
                             <div className="text-center">
                                 <button type="submit" className="btn btn-theme">
